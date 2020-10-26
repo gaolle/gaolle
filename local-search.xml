@@ -5,6 +5,58 @@
   
   <entry>
     <title></title>
+    <link href="/2020/10/27/mysql/"/>
+    <url>/2020/10/27/mysql/</url>
+    
+    <content type="html"><![CDATA[<h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><pre><code class="hljs go">_ <span class="hljs-string">&quot;github.com/go-sql-driver/mysql&quot;</span> <span class="hljs-comment">// mysql驱动</span></code></pre><h5 id="默认值NULL判断"><a href="#默认值NULL判断" class="headerlink" title="默认值NULL判断"></a>默认值NULL判断</h5><pre><code class="hljs go">val := sql.NullFloat64 <span class="hljs-comment">// 读取值操作</span><span class="hljs-keyword">if</span> sum.Valid &#123;<span class="hljs-comment">// 使用sum.Valid 进行判断是否为空值</span>&#125;</code></pre>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/2020/10/27/mongo/"/>
+    <url>/2020/10/27/mongo/</url>
+    
+    <content type="html"><![CDATA[<h1 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h1><p><a href="https://docs.mongodb.com/manual/tutorial/insert-documents/">https://docs.mongodb.com/manual/tutorial/insert-documents/</a></p><p>mongo 本质是按照key-value map 存储的 json</p><pre><code class="hljs go"><span class="hljs-string">&quot;go.mongodb.org/mongo-driver/mongo&quot;</span> <span class="hljs-comment">// mongo驱动</span></code></pre><h5 id="存储ma-np"><a href="#存储ma-np" class="headerlink" title="存储ma np"></a>存储ma np</h5><p>使用inc拼接（需要定义protobuf存储格式）</p><pre><code class="hljs json">&#123;    <span class="hljs-attr">&quot;school&quot;</span>: &#123;        <span class="hljs-attr">&quot;class&quot;</span>: &#123;            <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;name&quot;</span>,            <span class="hljs-attr">&quot;total&quot;</span>: <span class="hljs-number">10</span>,            <span class="hljs-attr">&quot;可变值&quot;</span>: <span class="hljs-number">1</span>        &#125;    &#125;&#125;</code></pre><p>根据map更新内容</p><pre><code class="hljs go">update.Inc(<span class="hljs-string">&quot;school.class.name, &quot;</span>name<span class="hljs-string">&quot;)</span><span class="hljs-string">update.Inc(&quot;</span>school.class.<span class="hljs-string">&quot;+strconv.Itoa(int(可变值)), 1)</span></code></pre><h5 id="读取map"><a href="#读取map" class="headerlink" title="读取map"></a>读取map</h5><pre><code class="hljs go">valMap := <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">interface</span>&#123;&#125;&#123;&#125;<span class="hljs-keyword">if</span> err := db.FindOne(ctx, filter).Decode(valMap); err != <span class="hljs-literal">nil</span> &#123;  <span class="hljs-keyword">return</span> err&#125;</code></pre><p><strong>存在时更新，不存在时创建, 主键(“_id”)不能更新</strong></p><p>set : 更新值</p><p>push：向数组压入值（可重复）</p><p>addToSet：向数组压入值（不可重复）</p><p>upsert：不存在时是否更新</p><pre><code class="hljs shell">db.test.update(&#123;&quot;_id&quot;: 2&#125;, &#123;$set: &#123;item: &quot;a&quot;&#125;, $push: &#123;tags: &quot;a&quot;&#125;&#125;, &#123;upsert:true&#125;)</code></pre>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/2020/10/27/%E5%89%91%E6%8C%87offer/"/>
+    <url>/2020/10/27/%E5%89%91%E6%8C%87offer/</url>
+    
+    <content type="html"><![CDATA[<h1 id="剑指-Offer"><a href="#剑指-Offer" class="headerlink" title="剑指 Offer"></a>剑指 Offer</h1><h4 id="剑指-Offer-03-数组中重复的数字"><a href="#剑指-Offer-03-数组中重复的数字" class="headerlink" title="剑指 Offer 03. 数组中重复的数字"></a><a href="https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/">剑指 Offer 03. 数组中重复的数字</a></h4><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">findRepeatNumber</span><span class="hljs-params">(nums []<span class="hljs-keyword">int</span>)</span> <span class="hljs-title">int</span></span> &#123;    tmp := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>]<span class="hljs-keyword">bool</span>)    res := <span class="hljs-number">0</span>    <span class="hljs-keyword">for</span> _, val := <span class="hljs-keyword">range</span> nums &#123;        <span class="hljs-keyword">if</span> _, ok := tmp[val]; ok &#123;            tmp[val] = <span class="hljs-literal">true</span>        &#125; <span class="hljs-keyword">else</span> &#123;            tmp[val] = <span class="hljs-literal">false</span>        &#125;        <span class="hljs-keyword">if</span> tmp[val] == <span class="hljs-literal">true</span> &#123;            res = val            <span class="hljs-keyword">break</span>        &#125;    &#125;    <span class="hljs-keyword">return</span> res&#125;</code></pre><h4 id="剑指-Offer-04-二维数组中的查找"><a href="#剑指-Offer-04-二维数组中的查找" class="headerlink" title="剑指 Offer 04. 二维数组中的查找"></a><a href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/">剑指 Offer 04. 二维数组中的查找</a></h4><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">findNumberIn2DArray</span><span class="hljs-params">(matrix [][]<span class="hljs-keyword">int</span>, target <span class="hljs-keyword">int</span>)</span> <span class="hljs-title">bool</span></span> &#123;    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(matrix) == <span class="hljs-number">0</span> || <span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>]) == <span class="hljs-number">0</span> &#123;        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>    &#125;    row := <span class="hljs-number">0</span>    col := <span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>]) - <span class="hljs-number">1</span> <span class="hljs-comment">// error len(matrix) - 1</span>    res := <span class="hljs-literal">false</span>    <span class="hljs-keyword">for</span> row &lt; <span class="hljs-built_in">len</span>(matrix) &amp;&amp; col &gt;= <span class="hljs-number">0</span> &#123;        <span class="hljs-keyword">if</span> matrix[row][col] &lt; target &#123;            row += <span class="hljs-number">1</span>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> matrix[row][col] &gt; target &#123;            col -= <span class="hljs-number">1</span>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> matrix[row][col] == target &#123;            res = <span class="hljs-literal">true</span>            <span class="hljs-keyword">break</span>        &#125;    &#125;    <span class="hljs-keyword">return</span> res&#125;</code></pre><h4 id="剑指-Offer-05-替换空格"><a href="#剑指-Offer-05-替换空格" class="headerlink" title="剑指 Offer 05. 替换空格"></a><a href="https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/">剑指 Offer 05. 替换空格</a></h4><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">replaceSpace</span><span class="hljs-params">(s <span class="hljs-keyword">string</span>)</span> <span class="hljs-title">string</span></span> &#123;    res := <span class="hljs-string">&quot;&quot;</span>    <span class="hljs-keyword">for</span> _, val := <span class="hljs-keyword">range</span> s &#123;        <span class="hljs-keyword">if</span> val == <span class="hljs-string">&#x27; &#x27;</span> &#123;             res += <span class="hljs-string">&quot;%20&quot;</span>        &#125; <span class="hljs-keyword">else</span> &#123;            res += <span class="hljs-keyword">string</span>(val)        &#125;    &#125;    <span class="hljs-keyword">return</span> res&#125;</code></pre>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/2020/10/27/golang/"/>
+    <url>/2020/10/27/golang/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h1><h5 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h5><p>不存在隐式类型转换，只能强制类型转换</p><p>函数或者变量：首字母大写外部可导入，小写包内使用</p><p>函数包依次导入，不一次性直接包含</p><h5 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h5><pre><code class="hljs go"><span class="hljs-keyword">var</span> arr = [...]<span class="hljs-keyword">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125; <span class="hljs-comment">// 可变数量</span><span class="hljs-keyword">for</span> _, val := <span class="hljs-keyword">range</span> arr &#123;    <span class="hljs-comment">// _ : 不读取， </span>    <span class="hljs-comment">// 遍历时不会越界</span>&#125;</code></pre><h5 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h5><p>底层 哈希表 </p><p>冲突方法 链地址法（数组加链表）</p><p>实际存储：key、value分别存储</p><p><a href="https://mp.weixin.qq.com/s/OJSxIXH87mjCkQn76eNQsQ">https://mp.weixin.qq.com/s/OJSxIXH87mjCkQn76eNQsQ</a></p><p>插入key对应的value写入对应的内存，而是返回了value应该插入的内存地址</p><p>把一个值 赋给一个地址</p><p>把一个地址 赋给一个地址</p><h5 id="String"><a href="#String" class="headerlink" title="String"></a>String</h5><pre><code class="hljs go"><span class="hljs-comment">// 字符串元素不可改，只读，支持切片</span>str := <span class="hljs-string">&quot;abcd&quot;</span> <span class="hljs-comment">// 定义之后不能修改，相当于常量 修改时必须赋值</span>str[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;b&#x27;</span> <span class="hljs-comment">// Cannot assign to str[0]</span></code></pre><h5 id="Mod"><a href="#Mod" class="headerlink" title="Mod"></a>Mod</h5><pre><code class="hljs shell">go mod init modnamego build</code></pre>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
     <link href="/2020/10/26/goland/"/>
     <url>/2020/10/26/goland/</url>
     

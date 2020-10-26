@@ -165,8 +165,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-26 22:55" pubdate>
-        2020年10月26日 晚上
+      <time datetime="2020-10-27 00:27" pubdate>
+        2020年10月27日 凌晨
       </time>
     </span>
   
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      130 字
+      43 字
     </span>
   
 
@@ -220,15 +220,13 @@
             <h1 style="display: none"></h1>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="Goland"><a href="#Goland" class="headerlink" title="Goland"></a>Goland</h1><h3 id="配置Git-Bash"><a href="#配置Git-Bash" class="headerlink" title="配置Git Bash"></a>配置Git Bash</h3><p>File-&gt;Settings-&gt;Tools-&gt;Terminal-&gt;Shell path-&gt;选择Git安装目录下的bin文件下的sh.exe</p>
-<h3 id="设置字体大小"><a href="#设置字体大小" class="headerlink" title="设置字体大小"></a>设置字体大小</h3><p>File-&gt;Settings-&gt;Editor-&gt;General-&gt;Font</p>
-<h3 id="格式化代码"><a href="#格式化代码" class="headerlink" title="格式化代码"></a>格式化代码</h3><p>CTRL+ALT+L</p>
-<h3 id="全局搜索"><a href="#全局搜索" class="headerlink" title="全局搜索"></a>全局搜索</h3><p>SHIFT+CTRL+F</p>
-<h3 id="局部搜索"><a href="#局部搜索" class="headerlink" title="局部搜索"></a>局部搜索</h3><p>CTRL+F</p>
-<h3 id="快速打开文件"><a href="#快速打开文件" class="headerlink" title="快速打开文件"></a>快速打开文件</h3><p>CTRL+SHIFT+N</p>
-<h3 id="设置注释后空一格"><a href="#设置注释后空一格" class="headerlink" title="设置注释后空一格"></a>设置注释后空一格</h3><p>File-&gt;Settings-&gt;Editor-&gt;Code Style-&gt;Go-&gt;Other</p>
-<p>选择 Add leading space to comments 修改右侧注释格式，然后点击Apply</p>
-<h3 id="连接外网下载包"><a href="#连接外网下载包" class="headerlink" title="连接外网下载包"></a>连接外网下载包</h3><p>Go -&gt; Go Modules -&gt; GOPROXY=<a target="_blank" rel="noopener" href="https://goproxy.cn,direct/">https://goproxy.cn,direct</a></p>
+              <h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><pre><code class="hljs go">_ <span class="hljs-string">&quot;github.com/go-sql-driver/mysql&quot;</span> <span class="hljs-comment">// mysql驱动</span></code></pre>
+
+<h5 id="默认值NULL判断"><a href="#默认值NULL判断" class="headerlink" title="默认值NULL判断"></a>默认值NULL判断</h5><pre><code class="hljs go">val := sql.NullFloat64 
+<span class="hljs-comment">// 读取值操作</span>
+<span class="hljs-keyword">if</span> sum.Valid &#123;
+	<span class="hljs-comment">// 使用sum.Valid 进行判断是否为空值</span>
+&#125;</code></pre>
 
             </div>
             <hr>
@@ -245,17 +243,11 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/27/golang/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/26/git/">
+                      <a href="/2020/10/27/mongo/">
                         <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
