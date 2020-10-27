@@ -1,7 +1,7 @@
 ---
 title: git
 date: 2020-10-27 01:15:50
-tags: aa
+tags: git
 ---
 
 # Git
