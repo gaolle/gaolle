@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="gaolle">
   <meta name="keywords" content="">
-  <title>notes</title>
+  <title>goland - notes</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -165,8 +165,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-28 00:24" pubdate>
-        2020年10月28日 凌晨
+      <time datetime="2020-10-27 01:15" pubdate>
+        2020年10月27日 凌晨
       </time>
     </span>
   
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      199 字
+      130 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      1
        分钟
     </span>
   
@@ -217,97 +217,38 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">goland</h1>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="剑指-Offer"><a href="#剑指-Offer" class="headerlink" title="剑指 Offer"></a>剑指 Offer</h1><h4 id="剑指-Offer-03-数组中重复的数字"><a href="#剑指-Offer-03-数组中重复的数字" class="headerlink" title="剑指 Offer 03. 数组中重复的数字"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/">剑指 Offer 03. 数组中重复的数字</a></h4><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">findRepeatNumber</span><span class="hljs-params">(nums []<span class="hljs-keyword">int</span>)</span> <span class="hljs-title">int</span></span> &#123;
-    tmp := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>]<span class="hljs-keyword">bool</span>)
-    res := <span class="hljs-number">0</span>
-    <span class="hljs-keyword">for</span> _, val := <span class="hljs-keyword">range</span> nums &#123;
-        <span class="hljs-keyword">if</span> _, ok := tmp[val]; ok &#123;
-            tmp[val] = <span class="hljs-literal">true</span>
-        &#125; <span class="hljs-keyword">else</span> &#123;
-            tmp[val] = <span class="hljs-literal">false</span>
-        &#125;
-
-        <span class="hljs-keyword">if</span> tmp[val] == <span class="hljs-literal">true</span> &#123;
-            res = val
-            <span class="hljs-keyword">break</span>
-        &#125;
-    &#125;
-    <span class="hljs-keyword">return</span> res
-&#125;</code></pre>
-
-<h4 id="剑指-Offer-04-二维数组中的查找"><a href="#剑指-Offer-04-二维数组中的查找" class="headerlink" title="剑指 Offer 04. 二维数组中的查找"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/">剑指 Offer 04. 二维数组中的查找</a></h4><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">findNumberIn2DArray</span><span class="hljs-params">(matrix [][]<span class="hljs-keyword">int</span>, target <span class="hljs-keyword">int</span>)</span> <span class="hljs-title">bool</span></span> &#123;
-    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(matrix) == <span class="hljs-number">0</span> || <span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>]) == <span class="hljs-number">0</span> &#123;
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-    &#125;
-
-    row := <span class="hljs-number">0</span>
-    col := <span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>]) - <span class="hljs-number">1</span> <span class="hljs-comment">// error len(matrix) - 1</span>
-    res := <span class="hljs-literal">false</span>
-
-    <span class="hljs-keyword">for</span> row &lt; <span class="hljs-built_in">len</span>(matrix) &amp;&amp; col &gt;= <span class="hljs-number">0</span> &#123;
-        <span class="hljs-keyword">if</span> matrix[row][col] &lt; target &#123;
-            row += <span class="hljs-number">1</span>
-        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> matrix[row][col] &gt; target &#123;
-            col -= <span class="hljs-number">1</span>
-        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> matrix[row][col] == target &#123;
-            res = <span class="hljs-literal">true</span>
-            <span class="hljs-keyword">break</span>
-        &#125;
-    &#125;
-    <span class="hljs-keyword">return</span> res
-&#125;</code></pre>
-
-<h4 id="剑指-Offer-05-替换空格"><a href="#剑指-Offer-05-替换空格" class="headerlink" title="剑指 Offer 05. 替换空格"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/">剑指 Offer 05. 替换空格</a></h4><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">replaceSpace</span><span class="hljs-params">(s <span class="hljs-keyword">string</span>)</span> <span class="hljs-title">string</span></span> &#123;
-    res := <span class="hljs-string">&quot;&quot;</span>
-    <span class="hljs-keyword">for</span> _, val := <span class="hljs-keyword">range</span> s &#123;
-        <span class="hljs-keyword">if</span> val == <span class="hljs-string">&#x27; &#x27;</span> &#123; 
-            res += <span class="hljs-string">&quot;%20&quot;</span>
-        &#125; <span class="hljs-keyword">else</span> &#123;
-            res += <span class="hljs-keyword">string</span>(val)
-        &#125;
-    &#125;
-    <span class="hljs-keyword">return</span> res
-&#125;</code></pre>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+              <h1 id="Goland"><a href="#Goland" class="headerlink" title="Goland"></a>Goland</h1><h3 id="配置Git-Bash"><a href="#配置Git-Bash" class="headerlink" title="配置Git Bash"></a>配置Git Bash</h3><p>File-&gt;Settings-&gt;Tools-&gt;Terminal-&gt;Shell path-&gt;选择Git安装目录下的bin文件下的sh.exe</p>
+<h3 id="设置字体大小"><a href="#设置字体大小" class="headerlink" title="设置字体大小"></a>设置字体大小</h3><p>File-&gt;Settings-&gt;Editor-&gt;General-&gt;Font</p>
+<h3 id="格式化代码"><a href="#格式化代码" class="headerlink" title="格式化代码"></a>格式化代码</h3><p>CTRL+ALT+L</p>
+<h3 id="全局搜索"><a href="#全局搜索" class="headerlink" title="全局搜索"></a>全局搜索</h3><p>SHIFT+CTRL+F</p>
+<h3 id="局部搜索"><a href="#局部搜索" class="headerlink" title="局部搜索"></a>局部搜索</h3><p>CTRL+F</p>
+<h3 id="快速打开文件"><a href="#快速打开文件" class="headerlink" title="快速打开文件"></a>快速打开文件</h3><p>CTRL+SHIFT+N</p>
+<h3 id="设置注释后空一格"><a href="#设置注释后空一格" class="headerlink" title="设置注释后空一格"></a>设置注释后空一格</h3><p>File-&gt;Settings-&gt;Editor-&gt;Code Style-&gt;Go-&gt;Other</p>
+<p>选择 Add leading space to comments 修改右侧注释格式，然后点击Apply</p>
+<h3 id="连接外网下载包"><a href="#连接外网下载包" class="headerlink" title="连接外网下载包"></a>连接外网下载包</h3><p>Go -&gt; Go Modules -&gt; GOPROXY=<a target="_blank" rel="noopener" href="https://goproxy.cn,direct/">https://goproxy.cn,direct</a></p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/goland/">goland</a>
+                    
+                  </div>
                 
               </div>
               
@@ -318,12 +259,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2020/10/27/golang/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">golang</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/28/mysql/">
-                        <span class="hidden-mobile"></span>
+                      <a href="/2020/10/27/mongo/">
+                        <span class="hidden-mobile">mongo</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -459,7 +406,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "&nbsp;",
+        "goland&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
