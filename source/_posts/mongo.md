@@ -1,3 +1,10 @@
+---
+title: mongo
+date: 2020-10-27 01:15:50
+tags: mongo
+categories: 数据库
+---
+
 # MongoDB
 
 https://docs.mongodb.com/manual/tutorial/insert-documents/

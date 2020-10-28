@@ -1,3 +1,10 @@
+---
+title: goland
+date: 2020-10-27 01:15:50
+tags: goland
+categories: 编辑器
+---
+
 # Goland
 
 ### 配置Git Bash

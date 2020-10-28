@@ -1,3 +1,10 @@
+---
+title: golang
+date: 2020-10-27 01:15:50
+tags: golang
+categories: 语言
+---
+
 # Golang
 
 ##### 语法
