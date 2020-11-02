@@ -281,7 +281,133 @@ if sum.Valid {
 }
 ```
 
+##### 联结效率比子查询高
 
+```mysql
+select id, name from a, c where a.id = c.id and c.name = "adc"
+select id, name inner join a, c on a,id = c,id and c.name = "abc"
+```
+
+##### 内部联结
+
+inner join on等值联结
+
+##### 外部联结
+
+left outer join on包含哪些在相关表中没有关联行的行 
+
+left\right 代表返回其所有行的表
+
+##### 笛卡尔积
+
+返回查找表的相乘结果
+
+##### 组合查询
+
+union 联结两个或两个以上的select语句 自动去重
+
+union all 返回所有行 不去重
+
+不允许使用多条order by语句，只能在最后一条where语句之后使用一条order by语句
+
+##### 插入数据
+
+完整一行数据
+
+```mysql
+insert into tablename values();
+```
+
+降低插入语句的优先级
+
+```mysql
+insert LOW_PRIORITY into tablename values();
+```
+
+##### 插入检索出来的数据
+
+insert select
+
+##### 更新数据
+
+```mysql
+update tablename set xxxxx where xxx;
+```
+
+更新多个值时，当一个值报错不停止继续执行
+
+```mysql
+update ignore tablename set xxxxx where xxx;
+```
+
+为了删除某个列的值，可设置它为null
+
+```mysql
+update tablename set xxxxx=NULL where xxx;
+```
+
+##### 删除
+
+delete 删除整行不是删除列
+
+```mysql
+delete from tablename where xxx;
+```
+
+删除表中的内容不是表
+
+##### 更快的删除
+
+```mysql
+truncate table
+```
+
+删除原来的表并重新创建一个表，而不是逐行删除表中的数据
+
+##### 创建表
+
+```mysql
+create table tablename (
+    .
+    .
+    .
+primary key (主键)
+)
+```
+
+##### 数据库引擎
+
+InnoDB是一个可靠的事务处理引擎，它不支持全文本搜索
+
+MyISAM是一个性能极高的引擎，它支持全文搜索，但不支持事务处理
+
+MEMORY在功能上等同于MyISAM,但由于数据存储在内存中，速度很快（特别适合于临时表）
+
+##### 更新表
+
+增加列
+
+```mysql
+alter table tablename add columnname type 
+```
+
+删除列
+
+```mysql
+alter table tablename drop column columnname
+```
+
+##### 删除表
+
+```mysql
+drop table tablename
+```
+
+##### 重命名表
+
+```mysql
+rename table tablename to tablenewname
+```
 
 
 
