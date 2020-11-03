@@ -80,7 +80,7 @@ SHOW CREATE TABLE tablename;
 
 ##### 通配符
 
-​	* 所有
+​	* 所有s
 
 ##### 只返回不同的值
 
@@ -409,18 +409,31 @@ drop table tablename
 rename table tablename to tablenewname
 ```
 
+##### 变量名
 
+所有MySQL变量都必须以@开始
 
-```
+##### 游标
 
-  1 #!/bin/bash
-  2  
-  3 session="backstage"
-  4 if tmux has-session -t $session; then
-  5     tmux kill-session -t $session
-  6 fi
-  7  
-  8 tmux new -s $session -d
-  9 tmux send -t $session "./backstage" Enter 
-```
+MySQL游标只能用于存储过程（和函数）
+
+##### 触发器
+
+MySQL响应delete、insert、update时自动执行的一条MySQL语句（或位于begin和end语句之间的一组语句）
+
+触发器名必须在每个表中唯一，但不是在每个数据库中唯一。这表示同一个数据库中的两个表可具有相同名字的触发器
+
+只有表才支持触发器，视图和临时表不支持
+
+##### 事务
+
+维护数据库的完整性，保证成批的MySQL操作要么完全执行，要么完全不执行
+
+事务：一组SQL语句
+
+回退：撤销指定SQL语句的过程
+
+提交：将未存储的SQL语句结果写入数据库表
+
+保留点：事务处理中设置的临时占位符，可以对它发布回退（与回退整个事务处理不同）
 
