@@ -61,3 +61,25 @@ upsert：不存在时是否更新
 ```shell
 db.test.update({"_id": 2}, {$set: {item: "a"}, $push: {tags: "a"}}, {upsert:true})
 ```
+
+##### BSON
+
+D是BSON文档的有序表示
+
+```go
+bson.D{{"foo", "bar"}, {"hello", "world"}, {"pi", 3.14159}}
+```
+
+E代表D的BSON元素
+
+M是BSON文档的无序表示。在编码和解码时，将这种类型作为常规map [string] interface {}处理。
+
+```go
+bson.M{"foo": "bar", "hello": "world", "pi": 3.14159}
+```
+
+A是BSON数组的有序表示
+
+```go
+bson.A{"bar", "world", 3.14159, bson.D{{"qux", 12345}}}
+```
