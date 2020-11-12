@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>share</title>
+    <link href="/2020/11/13/share/"/>
+    <url>/2020/11/13/share/</url>
+    
+    <content type="html"><![CDATA[<h2 id="英语"><a href="#英语" class="headerlink" title="英语"></a>英语</h2><h4 id="老友记1-10季"><a href="#老友记1-10季" class="headerlink" title="老友记1-10季"></a>老友记1-10季</h4><p>链接：<a href="https://pan.baidu.com/s/1VcaAUcpCMWJTniDd-oXa6Q">https://pan.baidu.com/s/1VcaAUcpCMWJTniDd-oXa6Q</a> </p><p>提取码：44gz </p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>share</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>git</title>
     <link href="/2020/10/27/git/"/>
     <url>/2020/10/27/git/</url>
@@ -29,31 +48,6 @@
   
   
   <entry>
-    <title>golang</title>
-    <link href="/2020/10/27/golang/"/>
-    <url>/2020/10/27/golang/</url>
-    
-    <content type="html"><![CDATA[<h1 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h1><h5 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h5><p>不存在隐式类型转换，只能强制类型转换</p><p>函数或者变量：首字母大写外部可导入，小写包内使用</p><p>函数包依次导入，不一次性直接包含</p><h5 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h5><pre><code class="hljs go"><span class="hljs-keyword">var</span> arr = [...]<span class="hljs-keyword">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125; <span class="hljs-comment">// 可变数量</span><span class="hljs-keyword">for</span> _, val := <span class="hljs-keyword">range</span> arr &#123;    <span class="hljs-comment">// _ : 不读取， </span>    <span class="hljs-comment">// 遍历时不会越界</span>&#125;</code></pre><h5 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h5><p>底层 哈希表 </p><p>冲突方法 链地址法（数组加链表）</p><p>实际存储：key、value分别存储</p><p><a href="https://mp.weixin.qq.com/s/OJSxIXH87mjCkQn76eNQsQ">https://mp.weixin.qq.com/s/OJSxIXH87mjCkQn76eNQsQ</a></p><p>插入key对应的value写入对应的内存，而是返回了value应该插入的内存地址</p><p>把一个值 赋给一个地址</p><p>把一个地址 赋给一个地址</p><h5 id="String"><a href="#String" class="headerlink" title="String"></a>String</h5><pre><code class="hljs go"><span class="hljs-comment">// 字符串元素不可改，只读，支持切片</span>str := <span class="hljs-string">&quot;abcd&quot;</span> <span class="hljs-comment">// 定义之后不能修改，相当于常量 修改时必须赋值</span>str[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;b&#x27;</span> <span class="hljs-comment">// Cannot assign to str[0]</span></code></pre><h5 id="Mod"><a href="#Mod" class="headerlink" title="Mod"></a>Mod</h5><pre><code class="hljs shell">go mod init modnamego build</code></pre>]]></content>
-    
-    
-    <categories>
-      
-      <category>语言</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>golang</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>goland</title>
     <link href="/2020/10/27/goland/"/>
     <url>/2020/10/27/goland/</url>
@@ -71,6 +65,31 @@
     <tags>
       
       <tag>goland</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>golang</title>
+    <link href="/2020/10/27/golang/"/>
+    <url>/2020/10/27/golang/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h1><h5 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h5><p>不存在隐式类型转换，只能强制类型转换</p><p>函数或者变量：首字母大写外部可导入，小写包内使用</p><p>函数包依次导入，不一次性直接包含</p><h5 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h5><pre><code class="hljs go"><span class="hljs-keyword">var</span> arr = [...]<span class="hljs-keyword">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125; <span class="hljs-comment">// 可变数量</span><span class="hljs-keyword">for</span> _, val := <span class="hljs-keyword">range</span> arr &#123;    <span class="hljs-comment">// _ : 不读取， </span>    <span class="hljs-comment">// 遍历时不会越界</span>&#125;</code></pre><h5 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h5><p>底层 哈希表 </p><p>冲突方法 链地址法（数组加链表）</p><p>实际存储：key、value分别存储</p><p><a href="https://mp.weixin.qq.com/s/OJSxIXH87mjCkQn76eNQsQ">https://mp.weixin.qq.com/s/OJSxIXH87mjCkQn76eNQsQ</a></p><p>插入key对应的value写入对应的内存，而是返回了value应该插入的内存地址</p><p>把一个值 赋给一个地址</p><p>把一个地址 赋给一个地址</p><h5 id="String"><a href="#String" class="headerlink" title="String"></a>String</h5><pre><code class="hljs go"><span class="hljs-comment">// 字符串元素不可改，只读，支持切片</span>str := <span class="hljs-string">&quot;abcd&quot;</span> <span class="hljs-comment">// 定义之后不能修改，相当于常量 修改时必须赋值</span>str[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;b&#x27;</span> <span class="hljs-comment">// Cannot assign to str[0]</span></code></pre><h5 id="Mod"><a href="#Mod" class="headerlink" title="Mod"></a>Mod</h5><pre><code class="hljs shell">go mod init modnamego build</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>语言</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>golang</tag>
       
     </tags>
     
