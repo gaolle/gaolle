@@ -57,3 +57,6 @@ str[0] = 'b' // Cannot assign to str[0]
 go mod init modname
 go build
 ```
+
+https://github.com/protocolbuffers/protobuf/releases
+protoc
