@@ -60,3 +60,14 @@ go build
 
 https://github.com/protocolbuffers/protobuf/releases
 protoc
+
+
+
+for{} select{}
+
+```
+for {}使用100％的CPU，因为它连续执行循环迭代。
+
+select {}使用接近0％的CPU，因为它会导致goroutine阻塞，这意味着调度程序将其置于睡眠状态，并且永远不会被唤醒。
+```
+
