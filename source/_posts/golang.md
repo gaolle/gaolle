@@ -71,3 +71,29 @@ for {}使用100％的CPU，因为它连续执行循环迭代。
 select {}使用接近0％的CPU，因为它会导致goroutine阻塞，这意味着调度程序将其置于睡眠状态，并且永远不会被唤醒。
 ```
 
+##### slice
+
+```go
+for k, v := range slice {
+	// 只能删除一个
+}
+
+for i := 0; i < slice.len(); i++ {
+	// 可删除多个
+}
+```
+
+template "" 转义问题
+
+```
+"text/template"
+```
+
+添加kafka时
+
+```
+_ "github.com/micro/go-plugins/broker/kafka" 
+--broker=kafka
+--broker_address=192.168.196.19:9092
+```
+
