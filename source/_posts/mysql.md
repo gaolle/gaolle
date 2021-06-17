@@ -437,3 +437,175 @@ MySQL响应delete、insert、update时自动执行的一条MySQL语句（或位�
 
 保留点：事务处理中设置的临时占位符，可以对它发布回退（与回退整个事务处理不同）
 
+
+
+### MySQL：关系数据库管理系统（RDBMS）(将数据保存在不同的表中)
+
+#### 特点：
+
+* 数据以表格的形式出现
+* 每行为各种记录名称
+* 每列为记录名称所对应的数据域
+* 许多的行和列组成一张表单
+* 若干的表单组成database
+
+#### RDBMS：
+
+* 数据库：关联表的集合
+* 数据表：数据的矩阵
+* 冗余：存储两倍数据，让系统速度更快
+* 主键：唯一，一个数据表只能包含一个主键
+* 外键：关联两个表
+* 复合键：将多个列作为一个索引键
+* 索引：快速索引特定信息。对数据库表中一列或多列的值进行排序的一种结构
+* 参照完整性：保证数据的一致性
+
+* 创建数据库
+
+  ```mysql
+  mysqladmin -u root -p create users
+  ```
+
+* 删除数据库
+
+  ```mysql
+  mysqladmin -u root -p drop users
+  ```
+
+* 选择数据库
+
+  ```mysql
+  use users
+  ```
+
+* 创建数据表
+
+  ```mysql
+  CREATE TABLE users_tbl
+  ```
+
+* 删除数据表
+
+  ```mysql
+  DROP TABLE users_tbl
+  ```
+
+* 插入数据
+
+  ```mysql
+  INSERT INTO users_tbl
+  (id, name)
+  VALUES
+  (1, "A")
+  ```
+
+* 查询数据库
+
+  ```mysql
+  SELECT * from users_tbl
+  ```
+
+### docker安装MySql
+
+* 拉取镜像
+
+  ```shell
+  docker pull mysql:latest
+  ```
+
+* 查看本地镜像
+
+  ```shell
+  docker images
+  ```
+
+* 运行一个容器
+
+  ```shell
+  docker run  --name Master -p 3306:3306 --restart=always  -e MYSQL_ROOT_PASSWORD=123456 -d mariadb:10.1
+  ```
+
+* 进入容器
+
+  ```shell
+  docker exec -it Master bash
+  ```
+
+* 登录mysql
+
+  ```shell
+  mysql -u root -p
+  ```
+
+  
+#### 主键（primarily key）
+
+能够唯一标志表中某一行的属性，一个表只能有一个主键
+
+#### 外键（foreign key）
+
+建立和加强两个表之间的链接，约束两个表之间数据的一致性。表的外键为另一个表的主键
+
+创建父表A（只有一个）
+
+```mysql
+CREATE TABLE A  
+(A_ID int NOT NULL, 
+A_NAME VARCHAR(100) NOT NULL,
+PRIMARY KEY (A_ID)；
+```
+
+创建子表B（一个或者多个）
+
+```mysql
+CREATE TABLE B 
+( B_ID int NOT NULL, 
+B_NAME VARCHAR(100) NOT NULL, 
+A_ID int NOT NULL, 
+PRIMARY KEY (B_ID)); 
+```
+
+A_ID为主键，B_ID为外键
+
+```mysql
+ALTER TABLE B ADD FOREIGN KEY (A_ID) REFERENCES A(A_ID);
+```
+
+A添加数据
+
+| A_ID | A_NAME |
+| ---- | ------ |
+| 1    | A      |
+| 2    | B      |
+| 3    | C      |
+
+B添加数据
+
+| B_ID | B_NAME | A_ID |
+| ---- | ------ | ---- |
+| 1    | C      | 1    |
+| 2    | C      | 2    |
+
+向B中添加数据父表中A_ID不存在的值时强制不执行
+
+```mysql
+INSERT INTO B (B_ID, B_NAME, A_ID) VALUES (3, "C", 4);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`users`.`B`, CONSTRAINT `B_ibfk_1` FOREIGN KEY (`A_ID`) REFERENCES `A` (`A_ID`))
+```
+
+#### 索引
+
+可以用来快速定位具有特征值的数据
+
+#### 唯一索引
+
+索引列的值必须唯一，允许空值
+
+创建唯一索引
+
+```mysql
+CREATE UNIQUE INDEX A_INDEX ON A(A_NAME)
+```
+
+
+
