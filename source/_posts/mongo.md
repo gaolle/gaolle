@@ -135,3 +135,9 @@ show dbs
 db.dropDatabase()
 ```
 
+golang 字符串转ObjectID
+
+```
+, _ := primitive.ObjectIDFromHex("")
+```
+
