@@ -332,3 +332,105 @@ impl Solution {
 }
 ```
 
+#### [剑指 Offer 29. 顺时针打印矩阵](https://leetcode-cn.com/problems/shun-shi-zhen-da-yin-ju-zhen-lcof/)
+
+```rust
+impl Solution {
+    pub fn spiral_order(matrix: Vec<Vec<i32>>) -> Vec<i32> {
+        if matrix.is_empty() {
+            return vec![];
+        }
+        let (mut x_min, mut x_max, mut y_min, mut y_max) = (0 as i32, (matrix.len() - 1) as i32, 0 as i32, (matrix[0].len() - 1) as i32);
+        let (mut x, mut y) = (0, 0);
+        let mut res = vec![];
+        loop {
+            if y <= y_max as usize {
+                for yy in y..=y_max as usize {
+                    res.push(matrix[x][yy as usize]);
+                }
+                y = y_max as usize;
+                x_min += 1;
+                x += 1;
+            }
+            if x_min > x_max {
+                return res;
+            }
+            if x <= x_max as usize {
+                for xx in x..=x_max as usize {
+                    res.push(matrix[xx][y]);
+                }
+                x = x_max as usize;
+                y_max -= 1;
+                if y != 0 {
+                    y -= 1;
+                }
+            }
+            if y_min > y_max {
+                return res;
+            }
+            if y >= y_min as usize {
+                for yy in (y_min as usize..=y).rev() {
+                    res.push(matrix[x][yy]);
+                }
+                y = y_min as usize;
+                x_max -= 1;
+                if x != 0 {
+                    x -= 1;
+                }
+            }
+            if x_min > x_max {
+                return res;
+            }
+            if x >= x_min as usize {
+                for xx in (x_min as usize..=x).rev() {
+                    res.push(matrix[xx][y]);
+                }
+                x = x_min as usize;
+                y_min += 1;
+                y += 1;
+            }
+            if y_min > y_max {
+                return res;
+            }
+        }
+    }
+}
+```
+
+#### [剑指 Offer 22. 链表中倒数第k个节点](https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/)
+
+```
+// Definition for singly-linked list.
+// #[derive(PartialEq, Eq, Clone, Debug)]
+// pub struct ListNode {
+//   pub val: i32,
+//   pub next: Option<Box<ListNode>>
+// }
+// 
+// impl ListNode {
+//   #[inline]
+//   fn new(val: i32) -> Self {
+//     ListNode {
+//       next: None,
+//       val
+//     }
+//   }
+// }
+impl Solution {
+    pub fn get_kth_from_end(head: Option<Box<ListNode>>, k: i32) -> Option<Box<ListNode>> {
+        let mut len = 0;
+        let mut h = head.clone();
+        while h.is_some() {
+            len += 1;
+            h = h.unwrap().next.clone();
+        }
+        let mut t = head.clone();
+        while len - k > 0 {
+            len -= 1;
+            t = t.unwrap().next.clone();
+        }
+        t
+    }
+}
+```
+
