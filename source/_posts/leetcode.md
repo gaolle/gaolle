@@ -271,6 +271,26 @@ impl Solution {
 }
 ```
 
+#### [剑指 Offer 17. 打印从1到最大的n位数](https://leetcode-cn.com/problems/da-yin-cong-1dao-zui-da-de-nwei-shu-lcof/)
+
+```
+impl Solution {
+    pub fn print_numbers(n: i32) -> Vec<i32> {
+        let mut max = 1;
+        for i in 0..n {
+            max *= 10;
+        }
+        let mut res = vec![];
+        for i in 1..max {
+            res.push(i);
+        }
+        res
+    }
+}
+```
+
+
+
 #### [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面](https://leetcode-cn.com/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/)
 
 ```
@@ -293,7 +313,7 @@ impl Solution {
 
 #### [剑指 Offer 27. 二叉树的镜像](https://leetcode-cn.com/problems/er-cha-shu-de-jing-xiang-lcof/)
 
-```
+```rust
 // Definition for a binary tree node.
 // #[derive(Debug, PartialEq, Eq)]
 // pub struct TreeNode {
@@ -331,6 +351,59 @@ impl Solution {
     }
 }
 ```
+
+
+
+#### [剑指 Offer 28. 对称的二叉树](https://leetcode-cn.com/problems/dui-cheng-de-er-cha-shu-lcof/)
+
+```rust
+// Definition for a binary tree node.
+// #[derive(Debug, PartialEq, Eq)]
+// pub struct TreeNode {
+//   pub val: i32,
+//   pub left: Option<Rc<RefCell<TreeNode>>>,
+//   pub right: Option<Rc<RefCell<TreeNode>>>,
+// }
+// 
+// impl TreeNode {
+//   #[inline]
+//   pub fn new(val: i32) -> Self {
+//     TreeNode {
+//       val,
+//       left: None,
+//       right: None
+//     }
+//   }
+// }
+use std::rc::Rc;
+use std::cell::RefCell;
+impl Solution {
+    pub fn is_symmetric(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
+        if root.is_none() {
+            return true;
+        }
+        let r = root.as_ref().unwrap().borrow_mut();
+        Solution::symmetric(r.left.clone(), r.right.clone())
+    }
+
+    pub fn symmetric(l: Option<Rc<RefCell<TreeNode>>>, r: Option<Rc<RefCell<TreeNode>>>) -> bool {
+        if l.is_none() && r.is_none() {
+            return true;
+        }
+        if l.is_none() || r.is_none() {
+            return false;
+        }
+        let lv = l.as_ref().unwrap().borrow_mut();
+        let rv = r.as_ref().unwrap().borrow_mut();
+        if lv.val != rv.val {
+            return false;
+        }
+        Solution::symmetric(lv.left.clone(), rv.right.clone()) && Solution::symmetric(lv.right.clone(), rv.left.clone())
+    }
+}
+```
+
+
 
 #### [剑指 Offer 29. 顺时针打印矩阵](https://leetcode-cn.com/problems/shun-shi-zhen-da-yin-ju-zhen-lcof/)
 
@@ -399,7 +472,7 @@ impl Solution {
 
 #### [剑指 Offer 22. 链表中倒数第k个节点](https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/)
 
-```
+```rust
 // Definition for singly-linked list.
 // #[derive(PartialEq, Eq, Clone, Debug)]
 // pub struct ListNode {
@@ -430,6 +503,31 @@ impl Solution {
             t = t.unwrap().next.clone();
         }
         t
+    }
+}
+```
+
+#### [剑指 Offer 47. 礼物的最大价值](https://leetcode-cn.com/problems/li-wu-de-zui-da-jie-zhi-lcof/)
+
+```rust
+use std::cmp::max;
+impl Solution {
+    pub fn max_value(grid: Vec<Vec<i32>>) -> i32 {
+        let (x_max, y_max) = (grid.len(), grid[0].len());
+        let mut dp = grid.clone();
+
+        for y in 1..y_max {
+            dp[0][y] = grid[0][y] + dp[0][y - 1];
+        }
+        for x in 1..x_max {
+            dp[x][0] = grid[x][0] + dp[x - 1][0];
+        }
+        for x in 1..x_max {
+            for y in 1..y_max {
+                dp[x][y] = grid[x][y] + max(dp[x - 1][y], dp[x][y - 1]);
+            }
+        }
+        dp[x_max - 1][y_max - 1]
     }
 }
 ```
