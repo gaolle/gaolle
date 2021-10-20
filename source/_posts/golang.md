@@ -481,3 +481,13 @@ _ "github.com/micro/go-plugins/broker/kafka"
 --broker_address=192.168.196.19:9092
 ```
 
+
+
+```
+for v := rang list {
+
+​	&v (此处遍历为同一个地址)
+
+}
+```
+
