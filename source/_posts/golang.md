@@ -491,3 +491,11 @@ for v := rang list {
 }
 ```
 
+
+
+
+
+```
+   /float（0）结果为 NaN
+```
+
