@@ -1,2 +1,5 @@
-  ctrl + s      锁住终端
-  ctrl + q      解锁终端
+ ctrl + s     			锁住终端
+ ctrl + q      			解锁终端
+Alt + 窗口数字 			切换到数组对应的窗口
+ctl+tab 				切换窗口
+ctrl + o 				新建窗口
